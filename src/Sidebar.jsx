@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 
 import style from './style.module.css';
 import {MainContext} from "./contexts/MainContext";
+import {Link} from "react-router-dom";
 
 const Sidebar = ()=>{
 
@@ -17,23 +18,23 @@ const Sidebar = ()=>{
                 </li>
                 <li className="py-3  border-bottom  border-secondary">
 
-                    <a href="/"> <i className="fa fa-user mx-3 fa-1x"></i>
-                        کاربران</a>
+                    <Link to="/user"> <i className="fa fa-user mx-3 fa-1x"></i>
+                        کاربران</Link>
                 </li>
                 <li className=" py-3 border-bottom  border-secondary">
 
-                    <a href="/"> <i className="fa fa-newspaper mx-3 fa-1x"></i>
-                        پست ها</a>
+                    <Link to="/post"> <i className="fa fa-newspaper mx-3 fa-1x"></i>
+                        پست ها</Link>
                 </li >
                 <li className=" py-3 border-bottom border-secondary ">
 
-                    <a href="/"><i className="fa fa-image mx-3 fa-1x"></i>
-                        گالری</a>
+                    <Link to="/gallery"><i className="fa fa-image mx-3 fa-1x"></i>
+                        گالری</Link>
                 </li>
                 <li className="py-3  border-bottom border-secondary">
 
-                    <a href="/"><i className="fa fa-list-ul mx-3 fa-1x"></i>
-                        کارها</a>
+                    <Link to="/todo"><i className="fa fa-list-ul mx-3 fa-1x"></i>
+                        کارها</Link>
                 </li>
             </ul>
         </div>
