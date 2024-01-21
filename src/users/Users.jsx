@@ -1,9 +1,33 @@
 import React from 'react';
 import style from '../style.module.css'
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import Swal from 'sweetalert2'
 
 const Users = ()=>{
+const navigate = useNavigate();
 
+const handleDeleteItem = (itemId) =>{
+
+    Swal.fire({
+        title: "حذف رکورد",
+        text: `آیا از حذف رکورد ${itemId} اطمینان دارید؟ `,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "بله حذف کن!",
+        cancelButtonText : "لغو"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+            });
+        }
+    });
+
+}
     return (
         <div className={`${style.item_content} mt-5 p-4 container-fluid`}>
             <h4 className="text-center">مدیریت کاربران</h4>
@@ -36,8 +60,11 @@ const Users = ()=>{
                         <td>mohammad</td>
                         <td>mhwmdrz9@gmail.com</td>
                         <td>
-                          <Link to="/user/add/2">  <i className="fas fa-edit text-warning mx-2 pointer"></i></Link>
-                            <i className="fas fa-trash text-danger mx-2 pointer"></i>
+                            <i className="fas fa-edit text-warning mx-2 pointer"
+                            onClick={()=>navigate("/user/add/2")}
+                            ></i>
+                            <i onClick={()=>handleDeleteItem(1)}
+                                className="fas fa-trash text-danger mx-2 pointer"></i>
                         </td>
                     </tr>
                 </tbody>

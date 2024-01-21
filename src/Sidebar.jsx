@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import style from './style.module.css';
 import {MainContext} from "./contexts/MainContext";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 const Sidebar = ()=>{
 
@@ -16,26 +16,34 @@ const Sidebar = ()=>{
                     <h5 className="text-center mt-3">محمد رضایی</h5>
                     <h6 className="text-center mt-2">مدیر</h6>
                 </li>
+                <NavLink className={({isActive})=> {return isActive ? "active" : "" }} to="/user">
                 <li className="py-3  border-bottom  border-secondary">
 
-                    <Link to="/user"> <i className="fa fa-user mx-3 fa-1x"></i>
-                        کاربران</Link>
+                    <i className="fa fa-user mx-3 fa-1x"></i>
+                        کاربران
                 </li>
+                </NavLink>
+                <NavLink className={({isActive})=> {return isActive ? "active": "" }} to="/post">
                 <li className=" py-3 border-bottom  border-secondary">
 
-                    <Link to="/post"> <i className="fa fa-newspaper mx-3 fa-1x"></i>
-                        پست ها</Link>
+                     <i className="fa fa-newspaper mx-3 fa-1x"></i>
+                        پست ها
                 </li >
+                </NavLink>
+                <NavLink className={({isActive})=> {return isActive ? "active": "" }} to="/gallery">
                 <li className=" py-3 border-bottom border-secondary ">
-
-                    <Link to="/gallery"><i className="fa fa-image mx-3 fa-1x"></i>
-                        گالری</Link>
+                    <i className="fa fa-image mx-3 fa-1x"></i>
+                        گالری
                 </li>
+                </NavLink>
+
+                <NavLink className={({isActive})=> {return isActive ? "active": "" }} to="/todo">
                 <li className="py-3  border-bottom border-secondary">
 
-                    <Link to="/todo"><i className="fa fa-list-ul mx-3 fa-1x"></i>
-                        کارها</Link>
+                    <i className="fa fa-list-ul mx-3 fa-1x"></i>
+                        کارها
                 </li>
+                </NavLink>
             </ul>
         </div>
     )

@@ -1,8 +1,8 @@
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 const AddUser = () => {
     const {userId} = useParams();
-
+    const navigate =useNavigate();
 return(
     <div className="row justify-content-center mt-5 ">
         <div className="col-9">
@@ -50,7 +50,9 @@ return(
                     </div>
 
                     <div className="col-12 d-flex justify-content-end mt-4">
-                        <button type="button" className="btn btn-outline-danger w-md mx-2 ">بازگشت</button>
+                        <button type="button" className="btn btn-outline-danger w-md mx-2 "
+                        onClick={()=>navigate(-1)}
+                        >بازگشت</button>
                         <button type="button" className="btn btn-outline-info w-md ">
                             {userId ? "ویرایش " : "افزودن"}
                         </button>
