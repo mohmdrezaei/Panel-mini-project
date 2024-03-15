@@ -1,12 +1,24 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import style from '../style.module.css'
 import {Link, useNavigate} from "react-router-dom";
 import Swal from 'sweetalert2'
+import axios from "axios";
 
 const Users = ()=>{
-const navigate = useNavigate();
+    const navigate = useNavigate();
+    const [users ,setUsers] = useState([]);
+
+    useEffect(() => {
+        axios.get("https://jsonplaceholder.typicode.com/users").then(res =>{
+            setUsers(res.data)
+        }).catch(err=>{
+            console.log(err)
+        })
+    }, []);
 
 const handleDeleteItem = (itemId) =>{
+
+
 
     Swal.fire({
         title: "حذف رکورد",
@@ -19,11 +31,22 @@ const handleDeleteItem = (itemId) =>{
         cancelButtonText : "لغو"
     }).then((result) => {
         if (result.isConfirmed) {
-            Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-            });
+            axios({
+                method : "DELETE",
+                url : `https://jsonplaceholder.typicode.com/users/${itemId}`
+            }).then(res=>{
+                if (res.status === 200){
+                    const newUsers = users.filter(u=>u.id !== itemId)
+                    setUsers(newUsers)
+                }
+                console.log(res)
+                Swal.fire({
+                    title: "عملیات موفق",
+                    text: "حذف با موفقیت انجام شد. ",
+                    icon: "success"
+                });
+            })
+
         }
     });
 
@@ -43,8 +66,9 @@ const handleDeleteItem = (itemId) =>{
                    </Link>
                 </div>
             </div>
-            <table className="table bg-light shadow">
-                <thead>
+            {users.length ?
+                <table className="table bg-light shadow">
+                    <thead>
                     <tr>
                         <th>#</th>
                         <th>نام</th>
@@ -52,23 +76,30 @@ const handleDeleteItem = (itemId) =>{
                         <th>ایمیل</th>
                         <th>عملیات</th>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>mohammad</td>
-                        <td>mohammad</td>
-                        <td>mhwmdrz9@gmail.com</td>
-                        <td>
-                            <i className="fas fa-edit text-warning mx-2 pointer"
-                            onClick={()=>navigate("/user/add/2")}
-                            ></i>
-                            <i onClick={()=>handleDeleteItem(1)}
-                                className="fas fa-trash text-danger mx-2 pointer"></i>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+
+                    {users.map(u=>(
+                        <tr key={u.id}>
+                            <td>{u.id}</td>
+                            <td>{u.name}</td>
+                            <td>{u.username}</td>
+                            <td>{u.email}</td>
+                            <td>
+                                <i className="fas fa-edit text-warning mx-2 pointer"
+                                   onClick={()=>navigate("/user/add/2")}
+                                ></i>
+                                <i onClick={()=>handleDeleteItem(u.id)}
+                                   className="fas fa-trash text-danger mx-2 pointer"></i>
+                            </td>
+                        </tr>
+                    ))}
+
+                    </tbody>
+                </table>
+            :
+                <h4 className="text-center text-info">لطفا صبر کنید ...</h4>
+            }
         </div>
     )
 
