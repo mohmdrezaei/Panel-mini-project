@@ -1,6 +1,7 @@
 import {useNavigate, useParams} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddUser = () => {
     const {userId} = useParams();
@@ -19,10 +20,42 @@ const AddUser = () => {
 
     const handleAddUser = (e) => {
         e.preventDefault();
-        axios.post("https://jsonplaceholder.typicode.com/users",data).then(res=>{
-            console.log(res)
-        })
+        if (!userId){
+            axios.post("https://jsonplaceholder.typicode.com/users",data).then(res=>{
+                console.log(res)
+                Swal.fire({
+                    title: "عملیات موفق",
+                    text: `کاربر ${res.data.name} با موفقیت ایجاد شد`,
+                    icon: "success"
+                });
+            })
+        }else {
+            axios.put(`https://jsonplaceholder.typicode.com/users/${userId}`,data).then(res=>{
+                console.log(res)
+                Swal.fire({
+                    title: "عملیات موفق",
+                    text: `کاربر ${res.data.name} با موفقیت ویرایش شد`,
+                    icon: "success"
+                });
+            })
+        }
     }
+
+    useEffect(() => {
+        axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`).then(res=>{
+           setData({
+               name: res.data.name,
+               userName : res.data.username,
+               email : res.data.email,
+               address: {
+                   street: res.data.address.street,
+                   city: res.data.address.city,
+                   suite : res.data.address.suite,
+                   zipcode : res.data.address.zipcode
+               }
+           })
+        })
+    }, []);
 return(
     <div className="row justify-content-center mt-5 ">
         <div className="col-9">

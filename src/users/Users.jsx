@@ -87,7 +87,7 @@ const handleDeleteItem = (itemId) =>{
                             <td>{u.email}</td>
                             <td>
                                 <i className="fas fa-edit text-warning mx-2 pointer"
-                                   onClick={()=>navigate("/user/add/2")}
+                                   onClick={()=>navigate(`/user/add/${u.id}`)}
                                 ></i>
                                 <i onClick={()=>handleDeleteItem(u.id)}
                                    className="fas fa-trash text-danger mx-2 pointer"></i>
