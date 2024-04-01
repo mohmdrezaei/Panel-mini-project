@@ -56,6 +56,7 @@ const AddUser = () => {
            })
         })
     }, []);
+
 return(
     <div className="row justify-content-center mt-5 ">
         <div className="col-9">
