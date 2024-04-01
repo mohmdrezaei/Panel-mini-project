@@ -7,12 +7,18 @@
     <list default="true" id="e3284312-dec0-4988-9820-03a482db166f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/users/AddUser.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/AddUser.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/Users.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/Users.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -58,7 +64,7 @@
       <workItem from="1709846152218" duration="592000" />
       <workItem from="1709922553445" duration="3659000" />
       <workItem from="1711017539471" duration="17500000" />
-      <workItem from="1711737870435" duration="4244000" />
+      <workItem from="1711737870435" duration="9513000" />
     </task>
     <servers />
   </component>
