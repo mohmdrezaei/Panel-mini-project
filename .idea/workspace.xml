@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e3284312-dec0-4988-9820-03a482db166f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Content.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Content.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/users/Users.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/users/Users.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/posts/ClickCount.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/posts/Counter.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/posts/HoverCount.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/posts/Posts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/posts/Posts.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,17 +44,19 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/react/my-app2/src/HOC",
+    "last_opened_file_path": "D:/react/my-app2/src/services",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\react\my-app2\src\services" />
       <recent name="D:\react\my-app2\src\HOC" />
       <recent name="D:\react\my-app2\src\posts" />
     </key>
@@ -73,7 +77,7 @@
       <workItem from="1709922553445" duration="3659000" />
       <workItem from="1711017539471" duration="17500000" />
       <workItem from="1711737870435" duration="15909000" />
-      <workItem from="1713081760958" duration="11623000" />
+      <workItem from="1713081760958" duration="17040000" />
     </task>
     <servers />
   </component>
