@@ -5,29 +5,44 @@ import axios from "axios";
 import {getPostService} from "../services/PostService";
 
 
-const Posts = ()=>{
-    const navigate =useNavigate();
+const Posts = () => {
+    const navigate = useNavigate();
     const [posts, setPosts] = useState([])
-    const getPosts =async () => {
-      const res = await getPostService();
-      setPosts(res.data)
-    }
-    useEffect(() => {
-       getPosts()
-    }, []);
-    const handleSearch = () => {
+    const [mainPosts , setMainPosts]=useState([])
+    const [uId , setUId] = useState(0)
 
+    const handleSearch = () => {
+        if (uId > 0 ) setPosts(mainPosts.filter(p=>p.userId == uId))
+        else  setPosts(mainPosts)
     }
-    const handleDeleteItem = () => {
-      
+    const handleDeleteItem = () => {}
+    const getPosts = async () => {
+        const res = await getPostService();
+        setPosts(res.data)
+        setMainPosts(res.data)
     }
+
+    useEffect(() => {
+        console.log("first render")
+        getPosts()
+    }, []);
+    useEffect(() => {
+        console.log("every render")
+    });
+    useEffect(() => {
+        console.log("every change")
+        handleSearch()
+    },[uId]);
+
+
     return (
         <div className={`${style.item_content} mt-5 p-4 container-fluid`}>
             <h4 className="text-center">مدیریت پست ها</h4>
             <div className="row my-2 mb-4 justify-content-between w-100 mx-0">
                 <div className="form-group col-10 col-md-6 col-lg-4">
-                    <input type="text" className="form-control shadow" placeholder="جستجو"
-                           onChange={handleSearch}/>
+                    <input type="number" className="form-control shadow" placeholder="جستجو"
+                           value={uId}
+                       onChange={(e)=>setUId(e.target.value)}/>
                 </div>
                 <div className="col-2 text-start px-0">
                     <Link to="/post/add">
@@ -41,8 +56,8 @@ const Posts = ()=>{
                 <table className="table bg-light shadow">
                     <thead>
                     <tr>
-                        <th>شناسه کاربر</th>
                         <th>#</th>
+                        <th>شناسه کاربر</th>
                         <th>عنوان</th>
                         <th>متن</th>
                         <th>عملیات</th>
@@ -51,9 +66,10 @@ const Posts = ()=>{
                     <tbody>
 
                     {posts.map(p => (
-                        <tr key={p.userId}>
+                        <tr key={p.id}>
                             <td>{p.id}</td>
-                            <td>{p.id}</td>
+                            <td className="text-primary" onClick={()=>setUId(p.userId)}
+                                style={{cursor:"pointer"}}>{p.userId}</td>
                             <td>{p.title}</td>
                             <td>{p.body}</td>
                             <td>
@@ -74,6 +90,6 @@ const Posts = ()=>{
         </div>
     )
 
-}
+};
 
 export default Posts;
