@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e3284312-dec0-4988-9820-03a482db166f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/posts/Posts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/posts/Posts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Content.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Content.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/PostService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/PostService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/todos/Todos.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/todos/Todos.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +43,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/react/my-app2/src/services",
+    "last_opened_file_path": "D:/react/my-app2/src/posts",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -53,9 +55,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\react\my-app2\src\posts" />
       <recent name="D:\react\my-app2\src\services" />
       <recent name="D:\react\my-app2\src\HOC" />
-      <recent name="D:\react\my-app2\src\posts" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -74,7 +76,8 @@
       <workItem from="1709922553445" duration="3659000" />
       <workItem from="1711017539471" duration="17500000" />
       <workItem from="1711737870435" duration="15909000" />
-      <workItem from="1713081760958" duration="23307000" />
+      <workItem from="1713081760958" duration="24920000" />
+      <workItem from="1713378751742" duration="10765000" />
     </task>
     <servers />
   </component>

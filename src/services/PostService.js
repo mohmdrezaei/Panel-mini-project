@@ -4,27 +4,27 @@ export const getPostService = ()=>{
    return  jpAxios.get("/posts");
 }
 
-/*
-export  const setUserService = async (data) => {
-    const res = await jpAxios.post("/users", data);
+
+export  const setPostService = async (data) => {
+    const res = await jpAxios.post("/posts", data);
     if (res) {
         console.log(res)
         Swal.fire({
             title: "عملیات موفق",
-            text: `کاربر ${res.data.name} با موفقیت ایجاد شد`,
+            text: ` پست شما با موفقیت ایجاد شد`,
             icon: "success"
         });
     }
 }
 
-export const updateUserService = async (data,userId) => {
-    const res = await  jpAxios.put(`/users/${userId}`, data);
+export const updatePostService = async (data,postId) => {
+    const res = await  jpAxios.put(`/posts/${postId}`, data);
     if (res) {
         console.log(res)
         Swal.fire({
             title: "عملیات موفق",
-            text: `کاربر ${res.data.name} با موفقیت ویرایش شد`,
+            text: ` پست مورد نظر با موفقیت ویرایش شد`,
             icon: "success"
         });
     }
-}*/
+}

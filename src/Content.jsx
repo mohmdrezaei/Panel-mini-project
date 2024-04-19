@@ -8,6 +8,7 @@ import Users from './users/Users';
 import {Navigate, Route, Routes} from "react-router-dom";
 import AddUser from "./users/AddUser";
 import WithAlert2 from "./HOC/WithAlert2";
+import AddPost from "./posts/AddPost";
 
 const Content = () => {
     const {showMenu, setShowMenu} = useContext(MainContext)
@@ -31,6 +32,9 @@ const Content = () => {
                     <Route path=":userId"/>
                 </Route>
                 <Route path='/post' element={<Posts/>}/>
+                <Route path='/post/add' element={<AddPost/>}>
+                    <Route path=":postId"/>
+                </Route>
                 <Route path='/gallery' element={<Gallery/>}/>
                 <Route path='/todo' element={<Todos/>}/>
                 <Route path='*'  element={
