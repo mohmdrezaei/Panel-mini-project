@@ -33,15 +33,17 @@ const AddUser = () => {
         }).catch(err => {
             console.log(err)
         })
-        jpAxios.get(`/posts/${postId}`).then(res => {
-            setData({
-                userId: res.data.userId,
-                id: res.data.id,
-                title: res.data.title,
-                body: res.data.body,
+      if(postId){
+          jpAxios.get(`/posts/${postId}`).then(res => {
+              setData({
+                  userId: res.data.userId,
+                  id: res.data.id,
+                  title: res.data.title,
+                  body: res.data.body,
 
-            })
-        })
+              })
+          })
+      }
     }, []);
 
     return (

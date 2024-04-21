@@ -31,19 +31,21 @@ const AddUser = () => {
     }
 
     useEffect(() => {
-        jpAxios.get(`/users/${userId}`).then(res => {
-            setData({
-                name: res.data.name,
-                userName: res.data.username,
-                email: res.data.email,
-                address: {
-                    street: res.data.address.street,
-                    city: res.data.address.city,
-                    suite: res.data.address.suite,
-                    zipcode: res.data.address.zipcode
-                }
+        if (userId){
+            jpAxios.get(`/users/${userId}`).then(res => {
+                setData({
+                    name: res.data.name,
+                    userName: res.data.username,
+                    email: res.data.email,
+                    address: {
+                        street: res.data.address.street,
+                        city: res.data.address.city,
+                        suite: res.data.address.suite,
+                        zipcode: res.data.address.zipcode
+                    }
+                })
             })
-        })
+        }
     }, []);
 
     return (
