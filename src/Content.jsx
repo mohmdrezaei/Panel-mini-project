@@ -9,6 +9,7 @@ import {Navigate, Route, Routes} from "react-router-dom";
 import AddUser from "./users/AddUser";
 import WithAlert2 from "./HOC/WithAlert2";
 import AddPost from "./posts/AddPost";
+import AddPost2 from "./posts/AddPost2";
 
 const Content = () => {
     const {showMenu, setShowMenu} = useContext(MainContext)
@@ -32,7 +33,7 @@ const Content = () => {
                     <Route path=":userId"/>
                 </Route>
                 <Route path='/post' element={<Posts/>}/>
-                <Route path='/post/add' element={<AddPost/>}>
+                <Route path='/post/add' element={<AddPost2/>}>
                     <Route path=":postId"/>
                 </Route>
                 <Route path='/gallery' element={<Gallery/>}/>

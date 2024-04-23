@@ -1,46 +1,47 @@
 import {useNavigate, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useEffect, useReducer, useState} from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import {jpAxios} from "../JpAxios";
 import {setUserService, updateUserService} from "../services/UserService";
 import {setPostService, updatePostService} from "../services/PostService";
+import {init, reducer} from "./PostReducer";
 
-const AddPost = () => {
+const AddPost2 = () => {
     const {postId} = useParams();
     const navigate = useNavigate();
-    const [users , setUsers] = useState([])
-    const [data, setData] = useState({
-        userId: "",
-        id: "",
-        title: "",
-        body: "",
-    });
+ const [data , dispatch] =useReducer(reducer , init)
 
 
     const handleAddPost = (e) => {
         e.preventDefault();
         if (!postId) {
-            setPostService(data);
+            setPostService(data.postData);
         } else {
-          updatePostService(data,postId)
+          updatePostService(data.postData,postId)
         }
     }
-
+const setInputValues = (e,propName) => {
+dispatch({
+    type : "setInputValue",
+    propName :propName,
+    propValue:e.target.value
+})
+}
     useEffect(() => {
         axios.get("https://jsonplaceholder.typicode.com/users").then(res => {
-            setUsers(res.data)
+            dispatch({
+                type: "changeUser",
+                payload : res.data
+            })
         }).catch(err => {
             console.log(err)
         })
       if(postId){
           jpAxios.get(`/posts/${postId}`).then(res => {
-              setData({
-                  userId: res.data.userId,
-                  id: res.data.id,
-                  title: res.data.title,
-                  body: res.data.body,
-
+              dispatch({
+                  type: "isUpdate",
+                  payload : res.data
               })
           })
       }
@@ -58,11 +59,10 @@ const AddPost = () => {
                             <div className="form-group row mt-4">
                                 <label htmlFor="name" className="col-md-2 col-form-label">کاربر</label>
                                 <div className="col-md-10">
-                                    <select name="" className="form-control" value={data.userId}
-                                    onChange={(e)=>setData({... data ,
-                                       userId: e.target.value})}>
+                                    <select name="" className="form-control" value={data.postData.userId}
+                                    onChange={(e)=>setInputValues(e,"userId")}>
                                         <option value="">کاربر مورد نظر را وارد کنید</option>
-                                        {users.map(u=>(
+                                        {data.users.map(u=>(
                                             <option value={u.id} key={u.id} >{u.name}</option>
                                         ))}
                                     </select>
@@ -71,22 +71,16 @@ const AddPost = () => {
                             <div className="form-group row mt-4">
                                 <label htmlFor="name" className="col-md-2 col-form-label">شناسه کاربر</label>
                                 <div className="col-md-10">
-                                    <input className="form-control" type="text" id="name" value={data.userId}
-                                           onChange={(e) => setData({
-                                               ...data,
-                                               userId: e.target.value
-                                           })}
+                                    <input className="form-control" type="text" id="name" value={data.postData.userId}
+                                           onChange={(e) =>setInputValues(e,"userId")}
                                     />
                                 </div>
                             </div>
                             <div className="form-group row mt-4">
                                 <label htmlFor="name" className="col-md-2 col-form-label">عنوان</label>
                                 <div className="col-md-10">
-                                    <input className="form-control" type="text" id="name" value={data.title}
-                                           onChange={(e) => setData({
-                                               ...data,
-                                               title: e.target.value
-                                           })}
+                                    <input className="form-control" type="text" id="name" value={data.postData.title}
+                                           onChange={(e) =>setInputValues(e,"title")}
                                     />
                                 </div>
                             </div>
@@ -95,9 +89,8 @@ const AddPost = () => {
                                 <label htmlFor="username" className="col-md-2 col-form-label">متن</label>
                                 <div className="col-md-10">
 
-                                    <textarea name="" id="" rows={5}  value={data.body} className="form-control"
-                                              onChange={(e) => setData({
-                                        ...data, body: e.target.value})}></textarea>
+                                    <textarea name="" id="" rows={5}  value={data.postData.body} className="form-control"
+                                      onChange={(e) =>setInputValues(e,"body")}></textarea>
 
                                 </div>
                             </div>
@@ -124,4 +117,4 @@ const AddPost = () => {
     )
 }
 
-export default AddPost;
+export default AddPost2;
