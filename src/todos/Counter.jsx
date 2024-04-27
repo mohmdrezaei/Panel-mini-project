@@ -1,27 +1,32 @@
-import React, {useReducer} from "react";
+import React, {useMemo, useState} from "react";
 
-const reducer = (state , action) => {
-  switch (action){
-      case "increment" :
-          return state +1
-      case "decrement" :
-          return state -1
-      case "reset" :
-          return init
-      default :
-          return state;
 
-  }
-}
-const init  = 0
 const Counter = () => {
-    const [count , dispatch] = useReducer(reducer , init)
-    return(
+    const [count, setCount] = useState(0)
+    const [countTwo, setCountTwo] = useState(10)
+
+    const incrementOne = () => {
+
+        setCount(count + 1)
+    }
+    const incrementTwo = () => {
+        setCountTwo(countTwo + 10)
+    }
+    const isEven = useMemo(() => {
+        let i = 0
+        while (i < 3000) {
+            console.log(count)
+            i++
+        }
+        return count % 2 === 0
+    }, [count])
+    return (
         <div className="text-center my-3">
-            <h1 className="text-center">{count}</h1>
-            <button className="btn btn-success" onClick={()=>dispatch("increment")}>افزایش</button>
-            <button className="btn btn-danger" onClick={()=>dispatch("decrement")}>کاهش</button>
-            <button className="btn btn-info" onClick={()=>dispatch("reset")}>ریست</button>
+            <h5 className="text-center my-3">{isEven ? "زوج" : "فرد"}</h5>
+            <button className="btn btn-success" onClick={incrementOne}>count one : {count}  </button>
+            <br/>
+            <br/>
+            <button className="btn btn-primary" onClick={incrementTwo}>count two : {countTwo} </button>
         </div>
     )
 }
