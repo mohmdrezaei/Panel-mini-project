@@ -3,6 +3,7 @@ import style from '../style.module.css'
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {getPostService} from "../services/PostService";
+import useTitle from "../hooks/useTitle";
 
 
 const Posts = () => {
@@ -34,7 +35,7 @@ const Posts = () => {
         handleSearch()
     },[uId]);
 
-
+useTitle("پست ها")
     return (
         <div className={`${style.item_content} mt-5 p-4 container-fluid`}>
             <h4 className="text-center">مدیریت پست ها</h4>

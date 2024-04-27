@@ -4,6 +4,7 @@ import {Link, useNavigate} from "react-router-dom";
 import Swal from 'sweetalert2'
 import axios from "axios";
 import WithAlert from "../HOC/WithAlert";
+import useTitle from "../hooks/useTitle";
 
 const Users = (props) => {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Users = (props) => {
             console.log(err)
         })
     }, []);
-
+    useTitle("کاربران")
     const handleDeleteItem = async (itemId) => {
         if (await Confirm(`آیا از حذف رکورد ${itemId} اطمینان دارید؟ `)) {
             axios({
